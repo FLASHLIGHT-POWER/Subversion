@@ -1,26 +1,26 @@
 package fs.type;
 
+import arc.*;
 import arc.func.*;
+import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
-import arc.util.io.*;
 import mindustry.annotations.Annotations.*;
 import mindustry.content.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.ui.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
-import mindustry.world.meta.*;
+import mindustry.world.blocks.distribution.*;
 
 import static mindustry.Vars.*;
 
-public class InsideBlock extends Block{
+public class InsideBlock extends Block implements Autotiler{
 
 	public float pressure = 1f;
 	
@@ -48,6 +48,7 @@ public class InsideBlock extends Block{
 	
 		public float oxygenConcentration;
 		public float oxygen;
+		public Tile[] tiles;
 	
 		@Override
 		public void updateTile(){
@@ -79,10 +80,10 @@ public class InsideBlock extends Block{
        }
 
     public float moveOxygen(Building next, float amount){
-        if(next == null || ! next instanceof InsideBlockBuilding ) return 0;
+        if(next == null || !next instanceof InsideBlockBuilding ) return 0;
         
         if(next.team == team && next.oxygenConcentration < oxygenConcentration){
-            next.addOxygen(amount);
+            next.oxygen+=amount;
             oxygen -= amount;
             return amount;
             }
