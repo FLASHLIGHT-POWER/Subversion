@@ -73,7 +73,4 @@ public class InsideBlock extends Block{
         }
         return 0;
     }
-        
-	}
-
 }
