@@ -70,7 +70,7 @@ public class InsideBlock extends Block{
             oxygen -= amount;
             return amount;
             }
-        }
         return 0;
+        }
     }
 }
