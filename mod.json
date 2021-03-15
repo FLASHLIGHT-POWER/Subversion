@@ -1,9 +1,0 @@
-{
-	"name": "颠覆",
-	"displayName": "颠覆--混沌",
-	"author": "手电",
-	"main": "fs.Fsmod",
-	"description": "只是一个普通的mod.",
-	"version": 1.0,
-	"minGameVersion": 105
-}
