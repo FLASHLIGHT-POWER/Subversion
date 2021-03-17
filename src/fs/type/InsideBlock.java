@@ -8,7 +8,6 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
-import mindustry.annotations.Annotations.*;
 import mindustry.content.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
@@ -77,6 +76,12 @@ public class InsideBlock extends Block implements Autotiler{
 		 		}
        		 	return 0;
         	}
+       }
+       
+       @Override
+       Building next(){
+       		Tile[] tiles = nearby();
+            return tiles[rotation];
        }
 
     public float moveOxygen(Building next, float amount){
