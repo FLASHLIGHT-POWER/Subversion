@@ -21,6 +21,8 @@ import static mindustry.Vars.*;
 
 public class InsideBlock extends Block implements Autotiler{
 
+	public @Load(name+"-top") TextureRegion topRegion;
+    public @Load(name+"@-bottom") TextureRegion bottomRegion;
 	public float pressure = 1f;
 	
 	public InsideBlock(String name , float pre){
@@ -48,7 +50,7 @@ public class InsideBlock extends Block implements Autotiler{
 
     @Override
     public TextureRegion[] icons(){
-        return new TextureRegion[]{Core.atlas.find(name+"-bottom"), topRegions[0]};
+        return new TextureRegion[]{bottomRegion, topRegion};
     }
 	
 	public class InsideBlockBuilding extends Building{
@@ -75,7 +77,7 @@ public class InsideBlock extends Block implements Autotiler{
 		
         public float moveOxygenForward(Tile[] tiles, float amount){
         
-        	for(int i=0;i<tiles.size();i++){
+        	for(int i=0;i<4;i++){
         		Tile next = tiles[i];
         		
         		if(next == null) return 0;
@@ -94,7 +96,7 @@ public class InsideBlock extends Block implements Autotiler{
 
     public float moveOxygen(Building next, float amount){
         if(next == null || !next instanceof InsideBlockBuilding ) return 0;
-        
+        next = (InsideBlockBuilding)next;
         if(next.team == team && next.oxygenConcentration < oxygenConcentration){
             next.oxygen+=amount;
             oxygen -= amount;
