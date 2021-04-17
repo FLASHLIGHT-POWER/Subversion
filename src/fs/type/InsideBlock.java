@@ -21,7 +21,7 @@ import static mindustry.Vars.*;
 public class InsideBlock extends Block implements Autotiler{
 
 	public TextureRegion topRegion = new TextureRegion(new Texture(Core.atlas.find(name+"-top")));
-    public TextureRegion bottomRegion new TextureRegion(new Texture(Core.atlas.find(name+"-bottom")));
+    public TextureRegion bottomRegion = new TextureRegion(new Texture(Core.atlas.find(name+"-bottom")));
 	public float pressure = 1f;
 	
 	public InsideBlock(String name , float pre){
