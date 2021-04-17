@@ -15,14 +15,13 @@ import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
-import mindustry.world.blocks.distribution.ChainedBuilding;
 
 import static mindustry.Vars.*;
 
 public class InsideBlock extends Block implements Autotiler{
 
-	public @Load(name+"-top") TextureRegion topRegion;
-    public @Load(name+"@-bottom") TextureRegion bottomRegion;
+	public TextureRegion topRegion = new TextureRegion(new Texture(Core.atlas.find(name+"-top")));
+    public TextureRegion bottomRegion new TextureRegion(new Texture(Core.atlas.find(name+"-bottom")));
 	public float pressure = 1f;
 	
 	public InsideBlock(String name , float pre){
@@ -95,7 +94,7 @@ public class InsideBlock extends Block implements Autotiler{
        }
 
     public float moveOxygen(Building next, float amount){
-        if(next == null || !next instanceof InsideBlockBuilding ) return 0;
+        if(next == null || ! next instanceof InsideBlockBuilding ) return 0;
         next = (InsideBlockBuilding)next;
         if(next.team == team && next.oxygenConcentration < oxygenConcentration){
             next.oxygen+=amount;
