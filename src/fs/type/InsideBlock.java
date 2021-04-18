@@ -25,10 +25,9 @@ import static mindustry.Vars.*;
 
 public class InsideBlock extends Block{
 
-	public int robots;
 	public int robotMax = 0;
-	public int people;
 	public int peopleMax = 5;
+	public float oxygenMax = 5;
 	
 	public InsideBlock(String name , int robot){
 		super(name);
@@ -41,26 +40,30 @@ public class InsideBlock extends Block{
 		update = true;
         solid = true;
 		this.robotMax = robotMax;
-		robots = 0;
-		people = 0;
-		
 	}
 	
 	@Override
     public void setBars(){
         super.setBars();
         
-        if(robotMax>0) bars.add("robot", entity -> new Bar("Robot", Pal.health, robots/robotMax).blink(Color.white));
+        if(robotMax>0) bars.add("Robot", (InsideBlockBuilding entity) -> new Bar(
+        "Robot", Pal.health, entity.oxygen/robotMax));
+        bars.add("People", (InsideBlockBuilding entity) -> new Bar(
+        "People", Pal.health, entity.robots/robotMax));
+        bars.add("OxygenConcentration", (InsideBlockBuilding entity) -> new Bar(
+        "Robot", Pal.health, entity.robots/robotMax));
 	}
 	
 	public class InsideBlockBuilding extends Building{
 		
 		public float oxygenConcentration = 0;
 		public float oxygen = 0;
+		public int robots;
+		public int people;
 	
 		@Override
 		public void updateTile(){
-			oxygenConcentration = oxygen/100;
+		
 		}
 	}
 }
