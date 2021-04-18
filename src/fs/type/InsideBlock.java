@@ -22,12 +22,13 @@ public class InsideBlock extends Block{
 		init(robots);
 	}
 	
-	public void init(int robots){
+	public void init(int robotMax){
 		super.init();
 		
 		update = true;
         solid = true;
-		this.robots = robots;
+		this.robotMax = robotMax;
+		robots = 0;
 		people = 0;
 		
 	}
@@ -36,7 +37,7 @@ public class InsideBlock extends Block{
     public void setBars(){
         super.setBars();
         
-        if(robotMax>0) bars.add("robot", entity -> new Bar("Robot", Pal.health, robots/robotMax).blink(Color.white))
+        if(robotMax>0) bars.add("robot", entity -> new Bar("Robot", Pal.health, robots/robotMax).blink(Color.white));
 	}
 	
 	public class InsideBlockBuilding extends Building{
