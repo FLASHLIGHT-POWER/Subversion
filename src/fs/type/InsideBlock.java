@@ -1,5 +1,18 @@
 package fs.type;
 
+import arc.*;
+import arc.audio.*;
+import arc.func.*;
+import arc.graphics.*;
+import arc.graphics.g2d.*;
+import arc.graphics.g2d.TextureAtlas.*;
+import arc.math.*;
+import arc.math.geom.*;
+import arc.scene.ui.layout.*;
+import arc.struct.EnumSet;
+import arc.struct.*;
+import arc.util.*;
+import arc.util.pooling.*;
 import mindustry.content.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
