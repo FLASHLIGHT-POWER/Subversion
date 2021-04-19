@@ -20,6 +20,7 @@ public class FsMod extends Mod{
     @Override
     public void loadContent(){
 		Log.info("啥也没有");
+		new FsBlocks.load();
     }
 
 }

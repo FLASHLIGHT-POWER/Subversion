@@ -73,7 +73,7 @@ public class InsideBlock extends Block{
 				() -> entity.robots/robotMax
 			)
 		);
-        bars.add("People", 
+		if(peopleMax>0) bars.add("People", 
 			(InsideBlockBuilding entity) -> new Bar(
 				() -> "People",
 				() -> Pal.health,
