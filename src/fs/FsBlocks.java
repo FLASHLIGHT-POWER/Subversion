@@ -7,7 +7,8 @@ import fs.type.*;
 
 public class FsBlocks implements ContentList{
 
-	public void Block robotBase;
+	public static Block 
+	robotBase;
 
 	@Override
 	public void load(){
