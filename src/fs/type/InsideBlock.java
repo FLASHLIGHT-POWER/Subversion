@@ -1,18 +1,16 @@
 package fs.type;
 
 import arc.*;
-import arc.audio.*;
-import arc.func.*;
+import arc.func.Cons;
+import arc.math.geom.*;
+import arc.struct.*;
+import arc.scene.ui.*;
+import arc.scene.ui.layout.*;
+import arc.math.*;
+import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
-import arc.graphics.g2d.TextureAtlas.*;
-import arc.math.*;
-import arc.math.geom.*;
-import arc.scene.ui.layout.*;
-import arc.struct.EnumSet;
-import arc.struct.*;
-import arc.util.*;
-import arc.util.pooling.*;
+import arc.scene.style.*;
 import mindustry.content.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
@@ -31,7 +29,7 @@ public class InsideBlock extends Block{
 	
 	public InsideBlock(String name , int robot){
 		super(name);
-		init(robots);
+		init(robot);
 	}
 	
 	public void init(int robotMax){
