@@ -11,7 +11,6 @@ import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.style.*;
-
 import mindustry.game.*;
 import mindustry.ctype.*;
 import mindustry.content.*;
@@ -43,8 +42,6 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
-
-
 import static mindustry.Vars.*;
 
 public class InsideBlock extends Block{
@@ -74,8 +71,13 @@ public class InsideBlock extends Block{
         "Robot", Pal.health, entity.oxygen/robotMax));
         bars.add("People", (InsideBlockBuilding entity) -> new Bar(
         "People", Pal.health, entity.robots/robotMax));
-        bars.add("OxygenConcentration", (InsideBlockBuilding entity) -> new Bar(
-        "Robot", Pal.health, entity.robots/robotMax));
+        bars.add("OxygenConcentration", 
+			(InsideBlockBuilding entity) -> new Bar(
+				() -> "OxygenConcentration",
+				() -> Pal.health,
+				() -> entity.oxygenConcentration
+			)
+		);
 	}
 	
 	public class InsideBlockBuilding extends Building{
@@ -87,7 +89,7 @@ public class InsideBlock extends Block{
 	
 		@Override
 		public void updateTile(){
-		
+			oxygenConcentration = oxygen/oxygenMax;
 		}
 	}
 }
