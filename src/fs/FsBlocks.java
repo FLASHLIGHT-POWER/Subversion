@@ -3,6 +3,7 @@ package fs;
 import mindustry.ctype.*;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.content.*;
 
 import fs.type.*;
 
