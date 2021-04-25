@@ -83,8 +83,10 @@ public class InsideBlock extends Block{
 		
 		public float oxygenConcentration = 0;
 		public float oxygen = 0;
-		public float people = 0;
+		public int people = 0;
 		public float oxygenM = 10;
+		public float craftTimeMultiple = 0;
+		public float killedPoint;
 	
 		@Override
 		public void updateTile(){
@@ -99,6 +101,27 @@ public class InsideBlock extends Block{
 					oxygen -= (near.oxygenConcentration - oxygenConcentration) * oxygenM;
 				near.increaseOxygen((near.oxygenConcentration - oxygenConcentration) * oxygenM);
 			}
+			
+			if(people>0){
+				consumeOxygen();
+				if(oxygenConcentration<0.75f){
+					killedPoint++;
+					craftTimeMultiple = 0.5f;
+					if(oxygenConcentration<0.5f){
+						killedPoint++;
+						craftTimeMultiple = 0.3f;
+					}
+					if(oxygenConcentration<0.2f){
+						killedPoint++;
+						craftTimeMultiple = 0.1f;
+					}
+				}
+			}
+			
+			if(killedPoint>=10){
+				people--;
+				killedPoint=0;
+			}
 		}
 		
 		public InsideBlockBuilding nearBuilding(int num){
@@ -109,6 +132,10 @@ public class InsideBlock extends Block{
 		
 		public void increaseOxygen(float amount){
 			oxygen += amount;
+		}
+		
+		public void consumeOxygen(){
+			oxygen -= people*0.05;
 		}
 	}
 }
