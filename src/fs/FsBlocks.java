@@ -25,7 +25,11 @@ public class FsBlocks implements ContentList{
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
 			health = 300;
 			consumes.power(0.5f);
-            consumes.liquid(Liquids.water, 0.1f);
+            consumes.liquid(Liquids.water, 0.4f);
+            hasPower = true;
+            hasLiquids = true;
+            liquidCapacity = 60;
+            
 		}};
 	}
 }
