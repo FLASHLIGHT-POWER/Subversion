@@ -93,7 +93,7 @@ public class InsideBlock extends Block{
 			if(oxygenM >0) oxygenConcentration = oxygen/oxygenM;
 			
 			for(int i = 0; i<4;i++){
-				InsideBuilding near = nearBuilding(i);
+				InsideBlockBuilding near = nearBuilding(i);
 				if(near==null) continue;
 				if(near.oxygenConcentration<oxygenConcentration) 
 					oxygen -= (near.oxygenConcentration - oxygenConcentration) * oxygenM;
@@ -103,7 +103,7 @@ public class InsideBlock extends Block{
 		
 		public Building nearBuilding(int num){
 			Tile next = tile.nearby(num);
-			if(next instanceof InsideBuilding) return next.building;
+			if(next instanceof InsideBlockBuilding) return next.build;
 			return null;
 		}
 		

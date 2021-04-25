@@ -13,7 +13,7 @@ import fs.type.*;
 public class FsBlocks implements ContentList{
 
 	public static Block 
-	robotBase;
+	oxygenProducer;
 
 	@Override
 	public void load(){
