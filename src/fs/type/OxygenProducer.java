@@ -17,7 +17,7 @@ public class OxygenProducer extends InsideBlock{
 		public void updateTile(){
 			super.updateTile();
 			
-			if(consValid&&oxygen<oxygenM){
+			if(consValid()&&oxygen<oxygenM){
 				time++;
 			}
 			if(time>=produceTime){
