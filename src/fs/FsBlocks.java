@@ -17,7 +17,7 @@ public class FsBlocks implements ContentList{
 
 	@Override
 	public void load(){
-		oxygenProducer = new oxygenProducer("oxygenProducer"){{
+		oxygenProducer = new OxygenProducer("oxygenProducer"){{
 			produceTime = 120f;
 			produceAmount = 3f;
 			oxygenMax = 40;
