@@ -103,7 +103,7 @@ public class InsideBlock extends Block{
 		
 		public InsideBlockBuilding nearBuilding(int num){
 			Tile next = tile.nearby(num);
-			if(next.build instanceof InsideBlockBuilding) return next.build;
+			if(next.build instanceof InsideBlockBuilding) return (InsideBlockBuilding)next.build;
 			return null;
 		}
 		
