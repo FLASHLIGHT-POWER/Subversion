@@ -17,8 +17,9 @@ public class FsBlocks implements ContentList{
 
 	@Override
 	public void load(){
-		robotBase = new InsideBlock("RobotBase",3){{
-			peopleMax = 0;
+		oxygenProducer = new InsideBlock("oxygenProducer"){{
+			peopleMax = 4;
+			oxygenMax = 40;
 			size = 3;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
 			health = 300;

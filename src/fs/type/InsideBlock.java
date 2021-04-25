@@ -46,33 +46,23 @@ import static mindustry.Vars.*;
 
 public class InsideBlock extends Block{
 
-	public float robotMax = 0;
-	public float peopleMax = 5f;
-	public float oxygenMax = 5f;
+	public float peopleMax = 0;
+	public float oxygenMax = 0;
 	
-	public InsideBlock(String name , float robot){
+	public InsideBlock(String name){
 		super(name);
-		init(robot);
+		init();
 	}
 	
-	public void init(float robotMax){
-		
+	public void init(){
 		update = true;
         solid = true;
-		this.robotMax = robotMax;
 	}
 	
 	@Override
     public void setBars(){
         super.setBars();
-        
-        if(robotMax>0) bars.add("Robot", 
-			(InsideBlockBuilding entity) -> new Bar(
-				() -> "Robot",
-				() -> Pal.health,
-				() -> entity.robots/robotMax
-			)
-		);
+
 		if(peopleMax>0) bars.add("People", 
 			(InsideBlockBuilding entity) -> new Bar(
 				() -> "People",
@@ -80,7 +70,7 @@ public class InsideBlock extends Block{
 				() -> entity.people/peopleMax
 			)
 		);
-		bars.add("OxygenConcentration", 
+		if(oxygenMax>0) bars.add("OxygenConcentration", 
 			(InsideBlockBuilding entity) -> new Bar(
 				() -> "OxygenConcentration",
 				() -> Pal.health,
@@ -93,12 +83,32 @@ public class InsideBlock extends Block{
 		
 		public float oxygenConcentration = 0;
 		public float oxygen = 0;
-		public float robots = 0;
 		public float people = 0;
+		public float oxygenM = 10;
 	
 		@Override
 		public void updateTile(){
-			oxygenConcentration = oxygen/oxygenMax;
+			
+			if(oxygenM!=oxygenMax) oxygenM = oxygenMax;
+			if(oxygenM >0) oxygenConcentration = oxygen/oxygenM;
+			
+			for(int i = 0; i<4;i++){
+				InsideBuilding near = nearBuilding(i);
+				if(near==null) continue;
+				if(near.oxygenConcentration<oxygenConcentration) 
+					oxygen -= (near.oxygenConcentration - oxygenConcentration) * oxygenM;
+				near.increaseOxygen((near.oxygenConcentration - oxygenConcentration) * oxygenM);
+			}
+		}
+		
+		public Building nearBuilding(int num){
+			Tile next = tile.nearby(num);
+			if(next instanceof InsideBuilding) return next.building;
+			return null;
+		}
+		
+		public void increaseOxygen(float amount){
+			oxygen += amount;
 		}
 	}
 }
