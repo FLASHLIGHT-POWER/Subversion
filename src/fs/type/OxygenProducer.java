@@ -21,7 +21,7 @@ public class OxygenProducer extends InsideBlock{
 				time++;
 			}
 			if(time>=produceTime){
-				consume();
+				//consume();
 				oxygen += produceAmount;
 			}
 		}
