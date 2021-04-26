@@ -102,7 +102,7 @@ public class InsideBlock extends Block{
 				near.increaseOxygen((near.oxygenConcentration - oxygenConcentration) * oxygenM);
 			}
 			
-			if(people>0){
+			/*if(people>0){
 				consumeOxygen();
 				if(oxygenConcentration<0.75f){
 					killedPoint++;
@@ -121,7 +121,7 @@ public class InsideBlock extends Block{
 			if(killedPoint>=10){
 				people--;
 				killedPoint=0;
-			}
+			}*/
 		}
 		
 		public InsideBlockBuilding nearBuilding(int num){
@@ -139,3 +139,4 @@ public class InsideBlock extends Block{
 		}
 	}
 }
+ 
