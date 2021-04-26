@@ -17,9 +17,9 @@ public class FsBlocks implements ContentList{
 
 	@Override
 	public void load(){
-		oxygenProducer = new OxygenProducer("oxygenProducer"){{
-			produceTime = 120f;
-			produceAmount = 3f;
+		oxygenProducer = new InsideBlock("oxygenProducer"){{
+			//produceTime = 120f;
+			//produceAmount = 3f;
 			oxygenMax = 40;
 			size = 3;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));

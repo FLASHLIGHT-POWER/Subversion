@@ -91,8 +91,8 @@ public class InsideBlock extends Block{
 		@Override
 		public void updateTile(){
 			
-			//if(oxygenM!=oxygenMax) oxygenM = oxygenMax;
-			//if(oxygenM >0) oxygenConcentration = oxygen/oxygenM;
+			if(oxygenM!=oxygenMax) oxygenM = oxygenMax;
+			if(oxygenM >0) oxygenConcentration = oxygen/oxygenM;
 			
 			/*for(int i = 0; i<4;i++){
 				InsideBlockBuilding near = nearBuilding(i);
