@@ -94,13 +94,13 @@ public class InsideBlock extends Block{
 			if(oxygenM!=oxygenMax) oxygenM = oxygenMax;
 			if(oxygenM >0) oxygenConcentration = oxygen/oxygenM;
 			
-			for(int i = 0; i<4;i++){
+			/*for(int i = 0; i<4;i++){
 				InsideBlockBuilding near = nearBuilding(i);
 				if(near==null) continue;
 				if(near.oxygenConcentration<oxygenConcentration) 
 					oxygen -= (near.oxygenConcentration - oxygenConcentration) * oxygenM;
 				near.increaseOxygen((near.oxygenConcentration - oxygenConcentration) * oxygenM);
-			}
+			}*/
 			
 			/*if(people>0){
 				consumeOxygen();
