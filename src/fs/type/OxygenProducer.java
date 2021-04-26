@@ -13,20 +13,6 @@ public class OxygenProducer extends InsideBlock{
 		
 		public float time = 0;
 		
-		@Override
-		public void updateTile(){
-			super.updateTile();
-			
-			/*if(consValid()&&oxygen<oxygenM){
-				time++;
-			}
-			if(time>=produceTime){
-				consume();
-				oxygen += produceAmount;
-			}
-			*/
-		}
-		
 		/*@Override
         public boolean shouldConsume(){
             return oxygen < oxygenM;

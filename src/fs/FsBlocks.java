@@ -29,7 +29,6 @@ public class FsBlocks implements ContentList{
             hasPower = true;
             hasLiquids = true;
             liquidCapacity = 60;
-            
 		}};
 	}
 }
