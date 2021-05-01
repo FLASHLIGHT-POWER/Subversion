@@ -78,7 +78,7 @@ public class InsideBlock extends Block{
 			)
 		);
 	}
-	
+	/*
 	public class InsideBlockBuilding extends Building{
 		
 		public float oxygenConcentration = 0;
@@ -121,7 +121,7 @@ public class InsideBlock extends Block{
 			if(killedPoint>=10){
 				people--;
 				killedPoint=0;
-			}*/
+			}
 		}
 		
 		public InsideBlockBuilding nearBuilding(int num){
@@ -137,6 +137,6 @@ public class InsideBlock extends Block{
 		public void consumeOxygen(){
 			oxygen -= people*0.05;
 		}
-	}
+	}*/
 }
  
