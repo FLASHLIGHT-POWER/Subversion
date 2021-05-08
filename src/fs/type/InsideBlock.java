@@ -29,6 +29,8 @@ public class InsideBlock extends Block{
 	public InsideBlock(String name){
 		super(name);
 		needPeople = false;
+		soild = true;
+		update = true;
 	}
 	
 	public InsideBlock(String name, boolean bool){
