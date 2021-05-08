@@ -11,6 +11,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.draw.*;
+import mindustry.ui.*;
 import mindustry.world.meta.*;
 
 import fs.FsColor;
