@@ -81,12 +81,10 @@ public class InsideBlock extends Block{
 			for(int i = 0;i<3;i++){
 				Building near = tile.nearbyBuild(i);
 				if(near instanceof InsideBlockBuild&& near.team == team ){
-					near = (InsideBlockBuild) near;
-				
-					float oxygenConN = near.oxygenConcentration;
+					float oxygenConN = (InsideBlockBuild)near.oxygenConcentration;
 					if(oxygenConN>oxygenConcentration){
-						float oxygenN  = near.oxygen;
-						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
+						float oxygenN  = (InsideBlockBuild)near.oxygen;
+						(InsideBlockBuild)near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
 						oxygen-=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
 					}
 				}
