@@ -29,7 +29,7 @@ public class InsideBlock extends Block{
 	public InsideBlock(String name){
 		super(name);
 		needPeople = false;
-		soild = true;
+		solid = true;
 		update = true;
 	}
 	
