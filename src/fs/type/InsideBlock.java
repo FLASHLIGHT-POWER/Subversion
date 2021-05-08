@@ -61,7 +61,7 @@ public class InsideBlock extends Block{
 	public class InsideBlockBuild extends Building{
 		public float oxygen=0;
 		public float people=2;
-		private int deathPoint
+		private int deathPoint;
 		public float oxygenConcentration;
 		@Override
 		public void updateTile(){
