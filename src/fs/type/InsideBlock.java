@@ -71,12 +71,30 @@ public class InsideBlock extends Block{
 			oxygenConcentration = oxygen / oxygenMax;
 			if(people>0){
 					if(oxygenConcentration<0.2f) deathPoint++;
-					if(deathPoint>60*10) people--;
+					if(deathPoint>60*10){ people--; deathPoint=0;};
 			}
 
 			if(oxygenConcentration<0.8&&needPeople){
 				timeMultiplier = oxygenConcentration;
 			}else timeMultiplier = 1f;
+			
+			for(int i = 0;i<3;i++){
+				Building near = tile.nearbyBuild(i);
+				if(near instanceof InsideBlockBuild&& near.team == team ){
+					near = (InsideBlockBuild) near;
+				
+					float oxygenConN = near.oxygenConcentration;
+					if(oxygenConN>oxygenConcentration){
+						float oxygenN  = near.oxygen;
+						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
+						oxygen-=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
+					}
+				}
+			}
+		}
+		
+		public void moveIntoOxygen(float amount){
+			oxygen += amount;
 		}
 	}
 }
