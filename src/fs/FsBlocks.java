@@ -21,6 +21,7 @@ public class FsBlocks implements ContentList{
 			//produceTime = 120f;
 			//produceAmount = 3f;
 			oxygenMax = 40;
+			peopleMax = 4;
 			size = 3;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
 			health = 300;
