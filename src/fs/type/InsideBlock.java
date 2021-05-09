@@ -62,7 +62,7 @@ public class InsideBlock extends Block{
 	}
 	
 	public class InsideBlockBuild extends Building{
-		public float oxygen=0;
+		public float oxygen=60;
 		public float people=2;
 		private int deathPoint;
 		public float oxygenConcentration;
