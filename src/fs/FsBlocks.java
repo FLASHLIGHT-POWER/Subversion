@@ -20,7 +20,7 @@ public class FsBlocks implements ContentList{
 		oxygenProducer = new InsideBlock("oxygenProducer"){{
 			//produceTime = 120f;
 			//produceAmount = 3f;
-			oxygenMax = 40;
+			oxygenMax = 8;
 			peopleMax = 4;
 			size = 3;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
