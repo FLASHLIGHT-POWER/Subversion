@@ -81,7 +81,7 @@ public class InsideBlock extends Block{
 				timeMultiplier = oxygenConcentration;
 			}else timeMultiplier = 1f;
 			
-			for(int i = 0;i<3;i++){
+			for(int i = 0;i<4;i++){
 				Building nearr = tile.nearbyBuild(i);
 				if(nearr instanceof InsideBlockBuild&& nearr.team == team ){
 					InsideBlockBuild near = (InsideBlockBuild)nearr;
