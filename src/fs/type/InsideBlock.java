@@ -62,8 +62,8 @@ public class InsideBlock extends Block{
 	}
 	
 	public class InsideBlockBuild extends Building{
-		public float oxygen=2;
-		public float people=4;
+		public float oxygen=4;
+		public float people=2;
 		private int deathPoint;
 		public float oxygenConcentration;
 		@Override
@@ -71,9 +71,9 @@ public class InsideBlock extends Block{
 			oxygenConcentration = oxygen / oxygenMax;
 			if(people>0){
 					if(oxygenConcentration<0.2f) deathPoint++;
-					if(deathPoint>60*10){ people--; deathPoint=0;};
+					if(deathPoint>60*5){ people--; deathPoint=0;};
 					if(oxygen>0){
-						oxygen-=people*0.1f;
+						oxygen-=people*0.01f;
 					}
 			}
 
