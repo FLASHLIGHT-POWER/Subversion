@@ -22,7 +22,7 @@ public class FsBlocks implements ContentList{
 			//produceAmount = 3f;
 			oxygenMax = 8;
 			peopleMax = 4;
-			size = 3;
+			size = 1;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
 			health = 300;
 			//consumes.power(0.5f);
