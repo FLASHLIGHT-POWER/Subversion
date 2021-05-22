@@ -14,6 +14,13 @@ import mindustry.world.draw.*;
 import mindustry.ui.*;
 import mindustry.world.meta.*;
 
+import arc.*;
+import mindustry.*;
+import mindustry.game.EventType.*;
+import mindustry.mod.*;
+import mindustry.ui.dialogs.*;
+
+
 import fs.FsColor;
 
 public class InsideBlock extends Block{
@@ -89,6 +96,7 @@ public class InsideBlock extends Block{
 					if(oxygenConN>oxygenConcentration){
 						float oxygenN  = near.oxygen;
 						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
+						Log.info("已转移");
 						oxygen-=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
 					}
 				}
