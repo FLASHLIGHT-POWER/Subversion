@@ -25,7 +25,7 @@ import fs.FsColor;
 
 public class InsideBlock extends Block{
 	
-	public float oxygenMax = 0;
+	public float oxygenMax = 5;
 	public float peopleMax = 0;
 	public int workPriority = 0;
 	public boolean needPeople;
