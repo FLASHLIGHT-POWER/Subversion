@@ -15,9 +15,14 @@ import mindustry.ui.*;
 import mindustry.world.meta.*;
 
 public class OxygenProducer extends InsideBlock{
-
+	
+	public float produceTime;
+	public float produceAmount;
+	
 	public OxygenProducer(String name, boolean need){
 		super(name,need);
+		produceTime = 60;
+		produceAmount = 3;
 	}
 	
 	public OxygenProducer(String name){
@@ -25,10 +30,33 @@ public class OxygenProducer extends InsideBlock{
 	}
 	
 	public class OxygenProducerBuild extends InsideBlockBuild{
+		
+		public float progress;
+		
 		@Override
 		public void updateTile(){
 			super.updateTile();
 			
+			if(consValid){
+				progress++;
+				if(progress>=produceTime){
+					consume();
+					oxygen+=produceAmount;
+					progress=0;
+				}
+			}
 		}
+		
+		@Override
+        public void write(Writes write){
+            super.write(write);
+            write.f(progress);
+        }
+
+        @Override
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
+            progress = read.f();
+        }
 	}
 }

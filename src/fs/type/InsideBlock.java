@@ -85,5 +85,19 @@ public class InsideBlock extends Block{
 		public void moveIntoOxygen(float amount){
 			oxygen += amount;
 		}
+		
+		@Override
+        public void write(Writes write){
+            super.write(write);
+            write.f(people);
+            write.f(oxygen);
+        }
+
+        @Override
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
+            people = read.f();
+            oxygen = read.f();
+        }
 	}
 }

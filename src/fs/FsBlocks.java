@@ -18,15 +18,15 @@ public class FsBlocks implements ContentList{
 	@Override
 	public void load(){
 		oxygenProducer = new OxygenProducer("oxygenProducer"){{
-			//produceTime = 120f;
-			//produceAmount = 3f;
+			produceTime = 120f;
+			produceAmount = 3f;
 			oxygenMax = 8;
 			peopleMax = 4;
 			size = 3;
 			requirements(Category.effect, with(Items.copper, 50, Items.lead, 90, Items.graphite, 70));
 			health = 300;
-			//consumes.power(0.5f);
-            //consumes.liquid(Liquids.water, 0.4f);
+			consumes.power(0.5f);
+            consumes.liquid(Liquids.water, 0.4f);
             hasPower = true;
             hasLiquids = true;
             liquidCapacity = 60;
