@@ -34,7 +34,7 @@ public class InsideBlock extends Block{
 	}
 	
 	public InsideBlock(String name){
-		InsideBlock(name,false);
+		this(name,false);
 	}
 	
 	@Override

@@ -21,7 +21,7 @@ public class OxygenProducer extends InsideBlock{
 	}
 	
 	public OxygenProducer(String name){
-		super(name);
+		super(name,false);
 	}
 	
 	public class OxygenProducerBuild extends InsideBlockBuild{
