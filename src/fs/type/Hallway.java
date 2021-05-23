@@ -20,7 +20,7 @@ public class Hallway extends InsideBlock{
 		super(name);
 	}
 	
-	public class HallwayBuilding extends InsideBlockBuilding {
+	public class HallwayBuild extends InsideBlockBuild {
 		@Override
 		public void updateTile(){
 			super.updateTile();

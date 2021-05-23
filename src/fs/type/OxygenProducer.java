@@ -24,7 +24,7 @@ public class OxygenProducer extends InsideBlock{
 		super(name);
 	}
 	
-	public class OxygenProducerBuilding extends InsideBlockBuilding{
+	public class OxygenProducerBuild extends InsideBlockBuild{
 		@Override
 		public void updateTile(){
 			super.updateTile();
