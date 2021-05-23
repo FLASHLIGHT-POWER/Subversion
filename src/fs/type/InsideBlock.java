@@ -14,13 +14,6 @@ import mindustry.world.draw.*;
 import mindustry.ui.*;
 import mindustry.world.meta.*;
 
-import arc.*;
-import mindustry.*;
-import mindustry.game.EventType.*;
-import mindustry.mod.*;
-import mindustry.ui.dialogs.*;
-
-
 import fs.FsColor;
 
 public class InsideBlock extends Block{
@@ -33,16 +26,15 @@ public class InsideBlock extends Block{
 	
 	public float timeMultiplier = 1;
 	
-	public InsideBlock(String name){
+	public InsideBlock(String name, boolean bool){
 		super(name);
-		needPeople = false;
+		needPeople = bool;
 		solid = true;
 		update = true;
 	}
 	
-	public InsideBlock(String name, boolean bool){
-		super(name);
-		needPeople = bool;
+	public InsideBlock(String name){
+		InsideBlock(name,false);
 	}
 	
 	@Override
@@ -69,8 +61,8 @@ public class InsideBlock extends Block{
 	}
 	
 	public class InsideBlockBuild extends Building{
-		public float oxygen=4;
-		public float people=2;
+		public float oxygen=0;
+		public float people=0;
 		private int deathPoint;
 		public float oxygenConcentration;
 		@Override
@@ -88,19 +80,6 @@ public class InsideBlock extends Block{
 				timeMultiplier = oxygenConcentration;
 			}else timeMultiplier = 1f;
 			
-			for(int i = 0;i<4;i++){
-				Building nearr = tile.nearbyBuild(i);
-				if(nearr instanceof InsideBlockBuild&& nearr.team == team ){
-					InsideBlockBuild near = (InsideBlockBuild)nearr;
-					float oxygenConN = near.oxygenConcentration;
-					if(oxygenConN>oxygenConcentration){
-						float oxygenN  = near.oxygen;
-						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
-						Log.info("已转移");
-						oxygen-=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
-					}
-				}
-			}
 		}
 		
 		public void moveIntoOxygen(float amount){
