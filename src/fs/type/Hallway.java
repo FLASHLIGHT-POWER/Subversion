@@ -36,6 +36,7 @@ public class Hallway extends InsideBlock{
 						float oxygenN  = near.oxygen;
 						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
 						oxygen-=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
+						continue;
 					}
 					if(oxygenConN<oxygenConcentration){
 						float oxygenN  = near.oxygen;
