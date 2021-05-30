@@ -14,6 +14,8 @@ import mindustry.world.draw.*;
 import mindustry.ui.*;
 import mindustry.world.meta.*;
 
+import mindustry.game.EventType.*;
+
 public class OxygenProducer extends InsideBlock{
 	
 	public float produceTime;
@@ -44,6 +46,7 @@ public class OxygenProducer extends InsideBlock{
 					oxygen+=produceAmount;
 					progress=0;
 				}
+				Log.info(name+oxygen);
 			}
 		}
 		
