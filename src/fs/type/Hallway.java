@@ -21,13 +21,16 @@ public class Hallway extends InsideBlock{
 	}
 	
 	public class HallwayBuild extends InsideBlockBuild {
+	
+		public Building next;
+		public InsideBlockBuild near;
 		@Override
 		public void updateTile(){
 			super.updateTile();
 			for(int i = 0;i<4;i++){
-				Building nearr = tile.nearbyBuild(i);
-				if(nearr instanceof InsideBlockBuild&& nearr.team == team ){
-					InsideBlockBuild near = (InsideBlockBuild)nearr;
+				next = tile.nearbyBuild(i);
+				if(next instanceof InsideBlockBuild&& next.team == team ){
+					near = (InsideBlockBuild)next;
 					float oxygenConN = near.oxygenConcentration;
 					if(oxygenConN>oxygenConcentration){
 						float oxygenN  = near.oxygen;
@@ -36,7 +39,7 @@ public class Hallway extends InsideBlock{
 					}
 					if(oxygenConN<oxygenConcentration){
 						float oxygenN  = near.oxygen;
-						near.moveIntoOxygen(-(oxygenConcentration-oxygenConN)*oxygenMax*0.2f);
+						near.moveIntoOxygen((oxygenConcentration-oxygenConN)*oxygenMax*0.2f*-0.1f);
 						oxygen+=(oxygenConcentration-oxygenConN)*oxygenMax*0.2f;
 					}
 				}
