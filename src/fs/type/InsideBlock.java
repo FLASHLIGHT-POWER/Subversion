@@ -1,25 +1,16 @@
 package fs.type;
 
-import arc.graphics.g2d.*;
-import arc.math.*;
-import arc.struct.*;
-import arc.util.*;
 import arc.util.io.*;
-import mindustry.content.*;
-import mindustry.entities.*;
 import mindustry.gen.*;
-import mindustry.type.*;
 import mindustry.world.*;
-import mindustry.world.draw.*;
 import mindustry.ui.*;
-import mindustry.world.meta.*;
 
 import fs.FsColor;
 
 public class InsideBlock extends Block{
-	
 	public float oxygenMax = 5;
 	public float peopleMax = 0;
+	public float foodMax = 0;
 	public int workPriority = 0;
 	public boolean needPeople;
 	//0~9 0最低
@@ -58,11 +49,21 @@ public class InsideBlock extends Block{
 				)
 			);
 		};
+		if(foodMax>0){
+			bars.add("food", 
+				(InsideBlockBuild entity) -> new Bar(
+					() -> "Food",
+					() -> FsColor.peopleC,
+					() -> entity.people / peopleMax
+				)
+			);
+		};
 	}
 	
 	public class InsideBlockBuild extends Building{
 		public float oxygen=0;
 		public float people=0;
+		public float food=0;
 		private int deathPoint;
 		public float oxygenConcentration;
 		@Override
@@ -74,6 +75,14 @@ public class InsideBlock extends Block{
 					if(oxygen>0){
 						oxygen-=people*0.01f;
 					}
+					if(food>0){
+						food-=people*0.02f;
+					}else if(food<0){
+						food=0;
+						deathPoint+=0.5f;
+					}else{
+						deathPoint+=0.5f;
+					}
 			}
 
 			if(oxygenConcentration<0.8&&needPeople){
@@ -82,15 +91,12 @@ public class InsideBlock extends Block{
 			
 		}
 		
-		public void moveIntoOxygen(float amount){
-			oxygen += amount;
-		}
-		
 		@Override
         public void write(Writes write){
             super.write(write);
             write.f(people);
             write.f(oxygen);
+            write.f(food);
         }
 
         @Override
@@ -98,6 +104,7 @@ public class InsideBlock extends Block{
             super.read(read, revision);
             people = read.f();
             oxygen = read.f();
+            food = read.f();
         }
 	}
 }
