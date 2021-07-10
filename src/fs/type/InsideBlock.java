@@ -54,7 +54,7 @@ public class InsideBlock extends Block{
 				(InsideBlockBuild entity) -> new Bar(
 					() -> "Food",
 					() -> FsColor.peopleC,
-					() -> entity.people / peopleMax
+					() -> entity.food / foodMax
 				)
 			);
 		};
