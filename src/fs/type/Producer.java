@@ -14,7 +14,7 @@ public class Producer extends InsideBlock{
     public class ProducerBuild extends InsideBlockBuild{
 
         public Storage.StorageBuild storageBuild;
-        var data = team.data();
+        Teams.TeamData data = team.data();
 
         @Override
         public void updateTile(){
