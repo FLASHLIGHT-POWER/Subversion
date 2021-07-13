@@ -13,7 +13,7 @@ import fs.type.*;
 public class FsBlocks implements ContentList{
 
 	//public static Block 
-	//foodProducer;
+	//foodProducer,Storage;
 
 	@Override
 	public void load(){
