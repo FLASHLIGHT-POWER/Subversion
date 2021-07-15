@@ -1,33 +1,49 @@
 package fs.type;
 
-import mindustry.game.Teams;
-import mindustry.gen.Building;
+import fs.*;
 
 public class Producer extends InsideBlock{
 
     public int produceType;
-
+	public float produceTime;
+	public float produceAmount;
+	
     public Producer(String name){
         super(name, true);
+        produceType = 0;
+        produceTime = 60;
+        needPeople = false;
     }
 
     public class ProducerBuild extends InsideBlockBuild{
-
-        public Storage.StorageBuild storageBuild;
-        Teams.TeamData data = team.data();
-
+    	public float process;
         @Override
         public void updateTile(){
-        	if(data.buildings!=null){
-        	    for (Building building : data.buildings.objects){
-        	        if(building instanceof Storage.StorageBuild){
-        	            storageBuild = (Storage.StorageBuild) building;
-        	            if(this.oxygen<oxygenMax) storageBuild.shareThing(0,1,this);
-        	            if(this.food<foodMax) storageBuild.shareThing(1,2,this);
-        	            if(this.people<peopleMax) storageBuild.shareThing(2,1,this);
-        	        }
-        	    }
-            }
+        	super.updateTile();
+        	process++
+       
+        	if(needPeople){
+        		timeMultiplier = peopleMax/people;
+        	}
+        	if(process==timeMultiplier*produceTime){
+        		switch (produceType){
+        			case 0:
+        				if(oxygen >=oxygenMax) FsData.OA+=produceAmount
+        				oxygen+=produceAmount;
+        				process=0;
+        				break;
+        			case 1:
+        				if(food >=foodMax) FsData.FA+=produceAmount
+        				food+=produceAmount;
+        				process=0;
+        				break;
+        			case 2:
+        				if(people >=peopleMax) FsData.PA+=produceAmount
+        				people+=produceAmount;
+        				process=0;
+        				break;
+        		}
+        	}
         }
     }
 }

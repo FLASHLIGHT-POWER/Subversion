@@ -1,6 +1,7 @@
 package fs.type;
 
 import arc.util.io.*;
+import fs.FsData;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.ui.*;
@@ -64,16 +65,37 @@ public class InsideBlock extends Block{
 		public float oxygen=0;
 		public float people=0;
 		public float food=0;
+		private int movePoint;
 		private int deathPoint;
 		public float oxygenConcentration;
 		@Override
 		public void updateTile(){
+			movePoint++;
+			if(movePoint>60&&oxygen>0&&food>0&&FsData.PA>0&&people<peopleMax){
+				FsData.PA -= 1;
+				people += 1;
+				movePoint=0;
+			}else{
+				if(food<foodMax&&FsData.FA>0) {
+					food += (float) 1 / 60;
+					FsData.FA -= (float) 1 / 60;
+				}if(oxygen<oxygenMax&&FsData.OA>0){
+					oxygen += (float)2/60;
+					FsData.OA -= (float)2/60;
+				}
+			}
+
 			oxygenConcentration = oxygen / oxygenMax;
 			if(people>0){
 					if(oxygenConcentration<0.2f) deathPoint++;
 					if(deathPoint>60*5){ people--; deathPoint=0;};
 					if(oxygen>0){
 						oxygen-=people*0.01f;
+					}else if(oxygen <0){
+						deathPoint += 1f;
+						oxygen =0;
+					}else{
+						deathPoint += 1f;
 					}
 					if(food>0){
 						food-=people*0.02f;

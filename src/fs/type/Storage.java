@@ -1,5 +1,8 @@
 package fs.type;
 
+import arc.util.io.*;
+import fs.*;
+
 public class Storage extends InsideBlock{
 	
 	public Storage(String name){
@@ -10,38 +13,31 @@ public class Storage extends InsideBlock{
 	}
 
 	public class StorageBuild extends InsideBlockBuild{
-		public float oxygenA,foodA,peopleA;
+		public boolean load = true;
 
-		public void shareThing(int i,float amount ,InsideBlockBuild build){
-				switch (i) {
-					case 0:
-						if(oxygenA>amount) {
-							build.oxygen += amount;
-							oxygenA -= amount;
-						}else{
-							build.oxygen += oxygenA;
-							oxygenA = 0;
-						}
-						break;
-					case 1:
-						if(foodA>amount) {
-							build.food += amount;
-							foodA -= amount;
-						}else{
-							build.food += foodA;
-							foodA = 0;
-						}
-						break;
-					case 2:
-						if(peopleA>amount) {
-							build.people += amount;
-							peopleA -= amount;
-						}else{
-							build.people += people;
-							peopleA = 0;
-						}
-						break;
+		@Override
+		public void updateTile(){
+			super.updateTile();
+			
+			if(FsData.FL&& load){
+				FsData.OA=FsData.FA=FsData.PA=0;
+				FsData.OM=FsData.FM=FsData.PM=0;
 			}
+			
+			if(load){
+				FsData.OM = oxygenMax;
+				FsData.FM = foodMax;
+				FsData.PM = peopleMax;
+				load=false;
+			}
+		}
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			load = true;
+			FsData.OA = oxygen;
+			FsData.FA = food;
+			FsData.PA = people;
 		}
 	}
 }
