@@ -20,7 +20,7 @@ public class Producer extends InsideBlock{
         @Override
         public void updateTile(){
         	super.updateTile();
-        	process++
+        	process++;
        
         	if(needPeople){
         		timeMultiplier = peopleMax/people;
@@ -28,17 +28,17 @@ public class Producer extends InsideBlock{
         	if(process==timeMultiplier*produceTime){
         		switch (produceType){
         			case 0:
-        				if(oxygen >=oxygenMax) FsData.OA+=produceAmount
+        				if(oxygen >=oxygenMax) FsData.OA+=produceAmount;
         				oxygen+=produceAmount;
         				process=0;
         				break;
         			case 1:
-        				if(food >=foodMax) FsData.FA+=produceAmount
+        				if(food >=foodMax) FsData.FA+=produceAmount;
         				food+=produceAmount;
         				process=0;
         				break;
         			case 2:
-        				if(people >=peopleMax) FsData.PA+=produceAmount
+        				if(people >=peopleMax) FsData.PA+=produceAmount;
         				people+=produceAmount;
         				process=0;
         				break;
